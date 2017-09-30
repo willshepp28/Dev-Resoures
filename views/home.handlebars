@@ -1,0 +1,19 @@
+<h1>Home</h1>
+
+
+
+
+
+<div class="topic-container">
+
+    {{#each languages}}
+    <div class="contain flex-row-center">
+        <a href="/language/{{id}}">
+        <img src="{{imgPath}}">
+        <h1>{{name}}</h1>
+        <p>{{description}}</p>
+        </a>
+
+    </div>
+    {{/each}}
+</div>
