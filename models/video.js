@@ -1,16 +1,17 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var Language = sequelize.define('Language', {
-    name: DataTypes.STRING,
-    imgPath: DataTypes.STRING,
+  var Video = sequelize.define('Video', {
+    languageId: DataTypes.INTEGER,
+    title: DataTypes.STRING,
+    vidPath: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        Language.hasMany(models.Video,{ foreignKey: 'languageId'});
+        Video.belongTo(models.Language, { foreignKey: 'languageId'});
       }
     }
   });
-  return Language;
+  return Video;
 };

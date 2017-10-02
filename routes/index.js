@@ -44,7 +44,7 @@ router
     .route('/language/:id')
     .get( async(request,response) => {
 
-        var language = models.Language.findOne({ where: { id: request.params.id }})
+        var language = await models.Language.findOne({ where: { id: request.params.id }})
             .then(function(language){
                 response.render('language', { language: language })
             })
@@ -53,6 +53,27 @@ router
                 response.redirect('/');
             })
     });
+
+
+
+
+
+router
+    .route('/dashboard/:id')
+    .get( async(request, response) => {
+        
+        var user = await models.User.findOne({ where: { id: request.params.id }})
+            .then(function(user){
+                response.render('dashboard', { user: user})
+            })
+            .catch(function(err){
+                console.log(err);
+                response.redirect('/');
+            });
+    });
+
+
+
 
 
 module.exports = router;
